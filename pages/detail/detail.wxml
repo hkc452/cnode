@@ -1,4 +1,35 @@
 <!--pages/detail/detail.wxml-->
 <view>
-  
+  <view class='header'>
+    <wxs src="../../libs/tab.wxs"  module="tab"/>
+    <view class='header_tab {{topic.top || topic.good ? "good" : ""}}'>{{tab(topic)}}</view>{{topic.title}}
+    <view class='changes'>
+      <wxs src="../../libs/period.wxs"  module="period"/>
+      <view class='changes_item'>发布于: {{period(topic.last_reply_at, now)}}</view>
+      <view class='changes_item'>作者: {{topic.author.loginname}}</view>
+      <view class='changes_item'>{{topic.visit_count}}次浏览</view>
+      <wxs src="../../libs/tab.wxs"  module="tab"/>
+      <view class='changes_item'>来自 {{tab(topic, 'false')}}</view>
+    </view>
+  </view>
+  <view class='topic'>
+    <import src="../../libs/wxParse/wxParse.wxml"/>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+  <view class='replies'>
+    <view class='count'>{{topic.replies.length}} 条回复 </view>
+    <view class='reply' wx:for="{{topic.replies}}" wx:key="item.id">
+        <view class='reply_header'>
+          <image class='reply_avatar' src='{{item.author.avatar_url}}'></image>
+          <view class='reply_user' >
+            <view class='reply_user_name'>{{item.author.loginname}}</view>
+            <view class='reply_user_time'>{{(index + 1)}}楼</view>
+          </view>
+        </view>
+        <view class='reply_content'>
+          <import src="../../libs/wxParse/wxParse.wxml"/>
+          <template is="wxParse" data="{{wxParseData:replyTemArray[index]}}"/>
+        </view>
+    </view>
+  </view>
 </view>

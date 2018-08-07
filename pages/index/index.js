@@ -10,6 +10,11 @@ Page({
     tabs: util.tabs,
     now: Date.now(),
   },
+  onShow: function () {
+    this.setData({
+      now: Date.now()
+    })
+  },
   onLoad: function () {
     const that = this
     wx.showLoading({

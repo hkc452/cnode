@@ -6,8 +6,11 @@ var tabs = {
   dev: '客户端测试',
   top: '置顶'
 }
-var translate = function (item) {
-  var tab = item.top ? 'top' : item.good ? 'good' : item.tab
+var translate = function (item, check) {
+  var tab = item.tab
+  if (!check) {
+    tab = item.top ? 'top' : (item.good ? 'good' : tab)
+  }
   return tabs[tab]
 }
 module.exports = translate

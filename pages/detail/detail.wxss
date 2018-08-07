@@ -1,1 +1,74 @@
 /* pages/detail/detail.wxss */
+@import "../../libs/wxParse/wxParse.wxss";
+.header {
+  padding: 20rpx;
+  font-size: 40rpx;
+}
+.header .header_tab {
+  display: inline-block;
+  margin-right: 10rpx;
+  font-size: 30rpx;
+  background-color: #e5e5e5;
+  color: #999;
+  padding: 4rpx 8rpx;
+  border-radius: 6rpx;
+}
+.header .header_tab.good {
+  color: #fff;
+  background-color: #80bd01;
+}
+.header .changes {
+  font-size: 24rpx;
+  color: #838383;
+  display: flex;
+  margin-top: 8rpx;
+}
+.header .changes .changes_item::before{
+  content: "•";
+  margin-right: 6rpx;
+}
+.header .changes .changes_item:not(:first-child) {
+  margin-left: 10rpx;
+}
+.topic {
+    padding: 20rpx;
+    border-top: 2rpx solid #e5e5e5;
+}
+
+.replies .count{
+  padding: 20rpx;
+  background-color: #f6f6f6;
+  font-size: 30rpx;
+}
+.replies  .reply {
+  border-top: 2rpx solid #f0f0f0;
+  padding: 20rpx;  
+}
+.replies .reply:first-child {
+  border-top:0rpx solid #f0f0f0;
+}
+.replies .reply .reply_header {
+  display: flex;
+}
+.replies .reply .reply_header .reply_avatar{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 6rpx;
+}
+.replies .reply .reply_header .reply_user {
+    margin-left: 20rpx;
+    font-size: 30rpx;
+    color: #666;
+    display: flex;
+    align-items: flex-start;
+}
+.replies .reply .reply_header .reply_user .reply_user_time {
+    color: #08c;
+    font-size: 24rpx;
+    margin-left: 8rpx;
+}
+.replies .reply .reply_content {
+  margin-top: 16rpx;
+  padding-bottom: 40rpx;
+}
+
