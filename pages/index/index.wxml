@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="list">
+  <view class="item" wx:for="{{list}}" wx:key="{{item.id}}">
+    <!-- <view>{{item.title}}</view> -->
+    <image class='avatar' src='{{item.author.avatar_url}}'></image>
+    <view class='tag '>
+      <!-- {{translate(item.tab, item.top)}} -->
+      <wxs src="../../libs/tab.wxs"  module="tab"/>
+      <view class='common {{item.top || item.good ? "good" : ""}}'>{{tab(item)}}</view>
+    </view>
+    <view class='title'>
+      <view class='title_top'>{{item.title}}</view>
+      <view class='title_bottom'>
+        <view>{{item.reply_count}}/{{item.visit_count}}</view>
+        <view>{{item.last_reply_at}}</view>
+      </view>
+    </view>
+  </view>
+</view>

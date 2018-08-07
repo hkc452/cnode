@@ -1,0 +1,13 @@
+var tabs = {
+  ask: '问答',
+  good: '精华',
+  share: '分享',
+  job: '招聘',
+  dev: '客户端测试',
+  top: '置顶'
+}
+var translate = function (item) {
+  var tab = item.top ? 'top' : item.good ? 'good' : item.tab
+  return tabs[tab]
+}
+module.exports = translate;

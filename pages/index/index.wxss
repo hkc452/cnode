@@ -1,0 +1,59 @@
+/**index.wxss**/
+.list .item:nth-child(1) {
+    border-top: none;
+}
+.list .item {
+  /* height: 100rpx; */
+  /* overflow: hidden; */
+  font-size: 28rpx;
+  display: flex;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-top: 2rpx solid #f0f0f0;
+}
+.list .item .tag {
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+}
+
+.list .item .tag .common{
+  background-color: #e5e5e5;
+  color: #999;
+  padding: 4rpx 8rpx;
+  border-radius: 6rpx;
+}
+.list .item .tag .good{
+  color: #fff;
+  background-color: #80bd01;
+}
+
+.list .item .title {
+  flex:1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rpx;
+}
+.list .item .title .title_top {
+  height: 40rpx;
+  line-height: 40rpx;
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+}
+.list .item .title .title_bottom {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  margin-top: 8rpx;
+  font-size: 20rpx;
+  line-height: 20rpx;
+}
+/* .list .item .title .title_bottom View{
+  
+} */
