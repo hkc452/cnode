@@ -9,11 +9,14 @@
       <view class='common {{item.top || item.good ? "good" : ""}}'>{{tab(item)}}</view>
     </view>
     <view class='title'>
-      <view class='title_top'>{{item.title}}</view>
-      <view class='title_bottom'>
-        <view>{{item.reply_count}}/{{item.visit_count}}</view>
-        <view>{{item.last_reply_at}}</view>
-      </view>
+      <navigator url='/pages/detail/detail?id={{item.id}}'>
+        <view class='title_top'>{{item.title}}</view>
+        <view class='title_bottom'>
+          <view>{{item.reply_count}}/{{item.visit_count}}</view>
+          <wxs src="../../libs/period.wxs"  module="period"/>
+          <view>{{period(item.last_reply_at, now)}}</view>
+        </view>
+      </navigator>
     </view>
   </view>
 </view>

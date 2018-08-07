@@ -10,4 +10,4 @@ var translate = function (item) {
   var tab = item.top ? 'top' : item.good ? 'good' : item.tab
   return tabs[tab]
 }
-module.exports = translate;
+module.exports = translate

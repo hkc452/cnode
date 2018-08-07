@@ -1,0 +1,28 @@
+var getPeriod = function (before, now) {
+  now = now ? now : Date.now();
+  before = Date.parse(before);
+  var period = now - before
+  var second = 1000
+  var minute = 60 * second
+  var hour = 60 * minute
+  var day = 24 * hour
+  var month = 30 * day
+  var year = 365 * day
+  var desc = ''
+  if (period >= year) {
+    return Math.ceil(period / year) + '年前'
+  } else if ( period >= month) {
+    return Math.ceil(period / month) + '月前'
+  } else if (period >= day) {
+    return Math.ceil(period / day) + '天前'
+  } else if (period >= hour) {
+    return Math.ceil(period / hour) + '小时前'
+  } else if (period >= minute) {
+    return Math.ceil(period / minute) + '分前'
+  } else if (period >= second) {
+    return Math.ceil(period / second) + '秒前'
+  } else {
+    return '刚刚'
+  }
+}
+module.exports = getPeriod

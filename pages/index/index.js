@@ -7,7 +7,8 @@ console.log(apis)
 Page({
   data: {
     list: [],
-    tabs: util.tabs
+    tabs: util.tabs,
+    now: Date.now(),
   },
   onLoad: function () {
     const that = this
