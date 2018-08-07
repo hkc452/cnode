@@ -23,7 +23,10 @@
           <image class='reply_avatar' src='{{item.author.avatar_url}}'></image>
           <view class='reply_user' >
             <view class='reply_user_name'>{{item.author.loginname}}</view>
-            <view class='reply_user_time'>{{(index + 1)}}楼</view>
+            <view class='reply_user_time'>{{(index + 1)}}楼•
+              <wxs src="../../libs/period.wxs"  module="period"/>
+              <view>{{period(item.create_at, now)}}</view>
+            </view>
           </view>
         </view>
         <view class='reply_content'>

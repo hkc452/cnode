@@ -66,6 +66,7 @@
     color: #08c;
     font-size: 24rpx;
     margin-left: 8rpx;
+    display: flex;
 }
 .replies .reply .reply_content {
   margin-top: 16rpx;
