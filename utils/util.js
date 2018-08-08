@@ -54,7 +54,7 @@ const checkAccess = function (accessToken = '', cb = function(){}) {
         console.log(res)
         wx.showToast({
           icon: 'none',
-          title: '无效AccessToken~~~',
+          title: '无效AccessToken~~',
           duration: 2000
         })
       }
