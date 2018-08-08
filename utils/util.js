@@ -53,7 +53,9 @@ const checkAccess = function (accessToken = '', cb = function(){}) {
         console.log('校验403')
         console.log(res)
         wx.showToast({
-          title: 'accessToken校验失败',
+          icon: 'none',
+          title: '无效AccessToken~~~',
+          duration: 2000
         })
       }
     },
