@@ -1,0 +1,12 @@
+<!--pages/user/user.wxml-->
+<view class='user'>
+  <view class='panel info'>
+    <view class='login' wx:if="{{isLogin}}">
+      <image class='avatar' src='{{userInfo.avatar_url}}'></image>
+      <view class='spec'>
+        欢迎：<view style='display:inline-block;marig-left:10rpx;'>{{userInfo.loginname}}</view>
+      </view>
+    </view>
+    <view bindtap='scanCode' hover-class="tap" class='nologin' class='nologin' wx:if="{{!isLogin}}">请扫描登录</view>
+  </view>
+</view>

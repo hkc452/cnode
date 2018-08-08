@@ -1,3 +1,4 @@
+const apis = require('./apis.js')
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -23,8 +24,49 @@ const tabs = {
 }
 const themeColor = '#80bd01'
 
+const checkAccess = function (accessToken = '', cb = function(){}) {
+  if (!accessToken) return
+  wx.showLoading({
+    title: '正在校验accessToken',
+  })
+  wx.request({
+    url: apis.accesstoken,
+    method: 'post',
+    data: {
+      accesstoken: accessToken
+    },
+    success: function (res) {
+      console.log(res)
+      if (res.statusCode === 200) {
+        wx.setStorage({
+          key: 'accesstoken',
+          data: accessToken,
+        })
+        let { success, ...userInfo} = res.data
+        console.log(userInfo)
+        wx.setStorage({
+          key: 'userInfo',
+          data: userInfo,
+        })
+        cb(userInfo)
+      } else {
+        console.log('校验403')
+        console.log(res)
+        wx.showToast({
+          title: 'accessToken校验失败',
+        })
+      }
+    },
+    complete: function () {
+      wx.hideLoading()
+    }
+  })
+}
+
+
 module.exports = {
   formatTime: formatTime,
   tabs: tabs,
-  themeColor: themeColor
+  themeColor: themeColor,
+  checkAccess: checkAccess
 }

@@ -1,22 +1,33 @@
 <!--index.wxml-->
-<view class="list">
-  <view class="item" wx:for="{{list}}" wx:key="{{item.id}}">
-    <!-- <view>{{item.title}}</view> -->
-    <image class='avatar' src='{{item.author.avatar_url}}'></image>
-    <view class='tag '>
-      <!-- {{translate(item.tab, item.top)}} -->
-      <wxs src="../../libs/tab.wxs"  module="tab"/>
-      <view class='common {{item.top || item.good ? "good" : ""}}'>{{tab(item)}}</view>
-    </view>
-    <view class='title'>
-      <navigator url='/pages/detail/detail?id={{item.id}}'>
-        <view class='title_top'>{{item.title}}</view>
-        <view class='title_bottom'>
-          <view>{{item.reply_count}}/{{item.visit_count}}</view>
-          <wxs src="../../libs/period.wxs"  module="period"/>
-          <view>{{period(item.last_reply_at, now)}}</view>
-        </view>
-      </navigator>
-    </view>
+<view>
+  <view class='tablist'>
+    <view bindtap='clickTap' class='{{!condition.tab? "active":" "}}' data-tab="">全部</view>
+    <view bindtap='clickTap' class='{{condition.tab === "good" ? "active":" "}}' data-tab="good">精华</view>
+    <view bindtap='clickTap' class='{{condition.tab === "share" ? "active":" "}}' data-tab="share">分享</view>
+    <view bindtap='clickTap' class='{{condition.tab === "ask" ? "active":" "}}'  data-tab="ask">问答</view>
+    <view bindtap='clickTap' class='{{condition.tab === "job" ? "active":" "}}'  data-tab="job">招聘</view>     
   </view>
+  <scroll-view scroll-y enable-back-to-top class="list" style='height: {{height}}' lower-threshold="-30" bindscrolltolower="next" 
+    bindscrolltoupper = "pre" upper-threshold="-50">
+    <view class="item" wx:for="{{list}}" wx:key="{{item.id}}">
+      <!-- <view>{{item.title}}</view> -->
+      <image class='avatar' src='{{item.author.avatar_url}}'></image>
+      <view class='tag '>
+        <!-- {{translate(item.tab, item.top)}} -->
+        <wxs src="../../libs/tab.wxs"  module="tab"/>
+        <view class='common {{item.top || item.good ? "good" : ""}}'>{{tab(item)}}</view>
+      </view>
+      <view class='title'>
+        <navigator url='/pages/detail/detail?id={{item.id}}'>
+          <view class='title_top'>{{item.title}}</view>
+          <view class='title_bottom'>
+            <view>{{item.reply_count}}/{{item.visit_count}}</view>
+            <wxs src="../../libs/period.wxs"  module="period"/>
+            <view>{{period(item.last_reply_at, now)}}</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </scroll-view>
 </view>
+

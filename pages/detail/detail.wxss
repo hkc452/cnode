@@ -20,16 +20,18 @@
 .header .changes {
   font-size: 24rpx;
   color: #838383;
-  display: flex;
+  /* display: flex; */
   margin-top: 8rpx;
+}
+.header .changes .changes_item {
+  float: left;
+  margin-left: 10rpx;
 }
 .header .changes .changes_item::before{
   content: "•";
   margin-right: 6rpx;
 }
-.header .changes .changes_item:not(:first-child) {
-  margin-left: 10rpx;
-}
+
 .topic {
     padding: 20rpx;
     border-top: 2rpx solid #e5e5e5;

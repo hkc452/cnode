@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "CNode"
+  "navigationBarTitleText": "CNode",
+  "backgroundColor": "#e1e1e1",
+  "backgroundTextStyle": "light"
 }

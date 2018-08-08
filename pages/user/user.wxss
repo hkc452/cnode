@@ -1,0 +1,43 @@
+/* pages/user/user.wxss */
+.user {
+  background-color: #f6f6f6;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+.user .panel {
+  padding: 20rpx  40rpx;
+  border-top: 2rpx solid #ccc;
+  border-bottom: 2rpx solid #ccc;
+  background-color: #fff;
+}
+.user .panel.info {
+  height: 150rpx;
+}
+.user .panel.info .nologin{
+  text-align: center;
+  line-height: 150rpx;
+  font-size: 40rpx;
+}
+.user .panel.info .nologin.tap{
+  color: #ccc;
+}
+.user .panel.info .login {
+  overflow: hidden;
+  height: 150rpx;
+}
+.user .panel.info .login .avatar{
+  width: 150rpx;
+  height: 150rpx;
+  display: block;
+  float: left;
+}
+.user .panel.info .login .spec{
+  flex:1;
+  overflow: hidden;
+  margin-left: 200rpx;
+  /* text-align: center; */
+  line-height: 150rpx;
+}

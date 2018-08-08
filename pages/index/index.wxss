@@ -1,4 +1,27 @@
 /**index.wxss**/
+
+.tablist {
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  background-color: #f6f6f6;
+  padding: 0 6rpx
+}
+.tablist view{
+  flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  color: #80bd01;
+  
+}
+.tablist view.active{
+  flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #80bd01;
+  border-radius: 6rpx;
+}
 .list .item:nth-child(1) {
     border-top: none;
 }
