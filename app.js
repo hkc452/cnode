@@ -12,9 +12,7 @@ App({
         that.globalData.isLogin = true
         that.globalData.userInfo = userInfo
         that.globalData.accesstoken = accesstoken
-        setTimeout(function(){
-          that.userInfoReadyCallback(userInfo)
-        }, 0)
+        that.userInfoReadyCallback(userInfo)
       })
     } catch(e) {
 

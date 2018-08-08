@@ -62,11 +62,22 @@ const checkAccess = function (accessToken = '', cb = function(){}) {
     }
   })
 }
+const loginOut = function (cb = noop) {
+  try {
+    wx.removeStorageSync('accesstoken')
+    wx.removeStorageSync('userInfo')
+    cb()
+  } catch (e) {
+  }
+}
+const noop = function () {
 
+}
 
 module.exports = {
   formatTime: formatTime,
   tabs: tabs,
   themeColor: themeColor,
-  checkAccess: checkAccess
+  checkAccess: checkAccess,
+  loginOut: loginOut
 }

@@ -41,3 +41,13 @@
   /* text-align: center; */
   line-height: 150rpx;
 }
+.user .panel.loginOut {
+  margin-top:  40rpx;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+}
+.user .panel.loginOut.hoverOut{
+  background-color: #d81e06;
+}

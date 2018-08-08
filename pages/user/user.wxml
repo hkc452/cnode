@@ -9,4 +9,7 @@
     </view>
     <view bindtap='scanCode' hover-class="tap" class='nologin' class='nologin' wx:if="{{!isLogin}}">请扫描登录</view>
   </view>
+  <view class='panel loginOut' wx:if="{{isLogin}}" hover-class='hoverOut' bindtap='loginOut'>
+    退出登录
+  </view>
 </view>

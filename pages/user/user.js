@@ -16,22 +16,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log("onload")
-    // const that = this
-    // wx.getStorage({
-    //   key: 'accesstoken ',
-    //   success: function (res) {
-    //     // console.log(res.data)
-    //   }
-    // })
     const that = this
-    app.userInfoReadyCallback = function (userInfo) {
-      console.log('123')
-      that.setData({
-        isLogin: true,
-        userInfo: userInfo
+    if (app.globalData.isLogin) {
+      console.log('fix')
+      this.setData({
+        isLogin: app.globalData.isLogin,
+        userInfo: app.globalData.userInfo
       })
+    } else {
+      app.userInfoReadyCallback = function (userInfo) {
+        that.setData({
+          isLogin: true,
+          userInfo: userInfo
+        })
+      }
     }
+    
   },
 
   /**
@@ -98,6 +98,27 @@ Page({
           })
         })
         
+      }
+    })
+  },
+  loginOut: function () {
+    const that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定要退出登录吗?',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          util.loginOut(function() {
+            app.globalData.isLogin = false
+            app.globalData.accesstoken = ''
+            app.globalData.userInfo = {}
+            that.setData({
+              isLogin: false,
+              userInfo: {}
+            })
+          })
+        } 
       }
     })
   }
