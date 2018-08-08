@@ -76,10 +76,34 @@ const noop = function () {
 
 }
 
+const checkNotReadMsg = function (accessToken) {
+  try {
+    accessToken = accessToken || wx.getStorageSync('accesstoken') || ''
+    if (!accessToken) return
+    wx.request({
+      url: apis.msgCount,
+      data: {
+        accesstoken: accessToken
+      },
+      success: function (res) {
+        if (res.data.data > 0) {
+          wx.showTabBarRedDot({
+            index: 1
+          })
+        }
+      }
+    })
+  } catch (e) {
+
+  }
+}
+
 module.exports = {
   formatTime: formatTime,
   tabs: tabs,
   themeColor: themeColor,
   checkAccess: checkAccess,
-  loginOut: loginOut
+  loginOut: loginOut,
+  checkNotReadMsg: checkNotReadMsg,
+  noop: noop
 }

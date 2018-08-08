@@ -96,6 +96,7 @@ Page({
             isLogin: true,
             userInfo: userInfo
           })
+          util.checkNotReadMsg(accesstoken)
         })
         
       }
