@@ -68,6 +68,7 @@ const loginOut = function (cb = noop) {
   try {
     wx.removeStorageSync('accesstoken')
     wx.removeStorageSync('userInfo')
+    clearLoginInfo()
     cb()
   } catch (e) {
   }
@@ -97,7 +98,25 @@ const checkNotReadMsg = function (accessToken) {
 
   }
 }
-
+let App = ''
+const setWxApp = function (app) {
+  App = app
+}
+const getWxApp = function () {
+  return App
+}
+// 保存登录信息
+const storeLoginInfo = function (userInfo, accesstoken) {
+  App.globalData.isLogin = true
+  App.globalData.userInfo = userInfo
+  App.globalData.accesstoken = accesstoken
+  checkNotReadMsg(accesstoken)
+}
+const clearLoginInfo = function () {
+  App.globalData.isLogin = false
+  App.globalData.userInfo = ''
+  App.globalData.accesstoken = ''
+}
 module.exports = {
   formatTime: formatTime,
   tabs: tabs,
@@ -105,5 +124,9 @@ module.exports = {
   checkAccess: checkAccess,
   loginOut: loginOut,
   checkNotReadMsg: checkNotReadMsg,
-  noop: noop
+  noop: noop,
+  setWxApp: setWxApp,
+  getWxApp: getWxApp,
+  storeLoginInfo: storeLoginInfo,
+  clearLoginInfo: clearLoginInfo
 }

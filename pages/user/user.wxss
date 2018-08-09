@@ -9,8 +9,8 @@
 }
 .user .panel {
   padding: 20rpx  40rpx;
-  border-top: 2rpx solid #ccc;
-  border-bottom: 2rpx solid #ccc;
+  /* border-top: 2rpx solid #f6f6f6;
+  border-bottom: 2rpx solid #f6f6f6; */
   background-color: #fff;
 }
 .user .panel.info {

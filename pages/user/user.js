@@ -16,22 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const that = this
-    if (app.globalData.isLogin) {
-      console.log('fix')
-      this.setData({
-        isLogin: app.globalData.isLogin,
-        userInfo: app.globalData.userInfo
-      })
-    } else {
-      app.userInfoReadyCallback = function (userInfo) {
-        that.setData({
-          isLogin: true,
-          userInfo: userInfo
-        })
-      }
-    }
-    
   },
 
   /**
@@ -45,7 +29,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if (app.globalData.isLogin && !this.data.isLogin) {
+      this.setData({
+        isLogin: app.globalData.isLogin,
+        userInfo: app.globalData.userInfo
+      })
+    }
   },
 
   /**
@@ -89,14 +78,11 @@ Page({
       success: (res) => {
         let accesstoken = res.result
         util.checkAccess(accesstoken, function (userInfo) {
-          app.globalData.isLogin = true
-          app.globalData.accesstoken = accesstoken
-          app.globalData.userInfo = userInfo
+          util.storeLoginInfo(userInfo, accesstoken)
           that.setData({
             isLogin: true,
             userInfo: userInfo
           })
-          util.checkNotReadMsg(accesstoken)
         })
         
       }
@@ -111,9 +97,6 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           util.loginOut(function() {
-            app.globalData.isLogin = false
-            app.globalData.accesstoken = ''
-            app.globalData.userInfo = {}
             that.setData({
               isLogin: false,
               userInfo: {}

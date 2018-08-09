@@ -1,6 +1,7 @@
 // pages/msg/msg.js
 const app = getApp()
 const util = require('../../utils/util.js')
+const apis = require('../../utils/apis.js')
 Page({
 
   /**
@@ -8,19 +9,15 @@ Page({
    */
   data: {
     readList: [],
-    notReadList: []
+    notReadList: [],
+    isLogin: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.request({
-    //   url: apis.messages,
-    //   data: {
-
-    //   }
-    // })
+    
   },
 
   /**
@@ -34,7 +31,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    // 已经登录
+    if (app.globalData.isLogin && !this.data.isLogin) {
+      this.setData({
+        isLogin: app.globalData.isLogin,
+      })
+      const that = this
+      wx.showLoading({
+        title: '正在获取消息...',
+      })
+      wx.request({
+        url: apis.messages,
+        data: {
+          accesstoken: app.globalData.accesstoken 
+        },
+        success: function(res) {
+          console.log(res)
+          if (res.data.success) {
+            that.setData({
+              readList: res.data.data.has_read_messages,
+              notReadList: res.data.data.hasnot_read_messages
+            })
+          }
+        },
+        complete: function () {
+          wx.hideLoading()
+        }
+      })
+    }
   },
 
   /**

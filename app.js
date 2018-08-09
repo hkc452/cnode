@@ -1,26 +1,25 @@
 //app.js
 const util = require('./utils/util.js')
 const apis = require('./utils/apis.js')
+const checkLogin = require('./utils/auth.js') 
 App({
   onLaunch: function () {
     const that = this
-    this.globalData.device = wx.getSystemInfoSync()
+    util.setWxApp(that)
     try {
-      let accesstoken = wx.getStorageSync("accesstoken")
-      util.checkAccess(accesstoken, function (userInfo){
-        console.log('userInfo', userInfo)
-        that.globalData.isLogin = true
-        that.globalData.userInfo = userInfo
-        that.globalData.accesstoken = accesstoken
-        that.userInfoReadyCallback(userInfo)
-        util.checkNotReadMsg(accesstoken)
-      })
-    } catch(e) {
+      // 获取设备信息
+      let device = wx.getStorageSync("device")
+      if (!device) {
+        device = wx.getSystemInfoSync()
+        wx.setStorageSync('device', device)
+      }
+      this.globalData.device =device
 
-    }
+
+      checkLogin() 
+    } catch(e) { }
     
   },
-  userInfoReadyCallback: util.noop,
   globalData: {
     device: null,
     isLogin: false,
