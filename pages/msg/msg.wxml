@@ -1,2 +1,12 @@
 <!--pages/msg/msg.wxml-->
-<text>pages/msg/msg.wxml</text>
+<view class='msg'>
+  <view class='msgHeader'>
+    <view bindtap='changeTab' class='item {{tab ==="not" ? "active" : ""}}' data-tab="not">未读</view>
+    <view bindtap='changeTab' class='item {{tab ==="read" ? "active" : ""}}' data-tab="read">已读</view>
+  </view>
+  <view class='msgList'>
+    <view class='msgLissItem' wx:for='{{tab === "not" ? notReadList : readList}}' wx:key="item.id">
+      <view class=''></view>
+    </view>
+  </view>
+</view>

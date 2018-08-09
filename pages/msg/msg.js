@@ -10,7 +10,8 @@ Page({
   data: {
     readList: [],
     notReadList: [],
-    isLogin: false
+    isLogin: false,
+    tab: 'read',// not, read
   },
 
   /**
@@ -79,8 +80,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
-  },
+    console.log('下拉')
+  },  
 
   /**
    * 页面上拉触底事件的处理函数
@@ -94,5 +95,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  changeTab(e) {
+    console.log(e.currentTarget)
+    this.setData({
+      tab: e.currentTarget.dataset.tab
+    })
   }
 })

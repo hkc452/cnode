@@ -42,8 +42,11 @@
   line-height: 150rpx;
 }
 .user .panel.loginOut {
-  margin-top:  40rpx;
+  margin-top:  80rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
   background-color: red;
+  border-radius: 10rpx;
   color: #fff;
   text-align: center;
   font-size: 36rpx;
